@@ -64,4 +64,4 @@ echo "ჩამონათვალის პირველი ელემე
 echo "ჩამონათვალის ყველა ელემენტი ${NUMBERS[*]}" # ყველას დაბეჭდვა
 echo "ჩამონათვალის ყველა ელემენტი ${NUMBERS[@]}" # ყველას დაბეჭდვა
 ```
-
+<!-- https://www.tutorialspoint.com/unix/unix-using-arrays.htm -->
