@@ -357,3 +357,35 @@ do
    esac
 done
 ```
+## ჩანაცვლება (Substitution)
+
+`-e`-ს დამატება სტრიქონამდე საშუალებას გვაძლევს ჩავანაცვლოთ ისეთი "escape-იანი სიმბოლოები" როგორიცაა მაგალითად `\n`
+
+```bash
+#!/bin/sh
+
+a=10
+echo -e "Value of a is $a \n"
+```
+### ბრძანების ჩანაცვლება
+```bash
+#!/bin/sh
+
+DATE=`date`
+echo "Date is $DATE"
+
+USERS=`who | wc -l`
+echo "Logged in user are $USERS"
+
+UP=`date ; uptime`
+echo "Uptime is $UP"
+```
+
+|# | ფორმა | აღწერა|
+---|---|---
+1| `${var}` | ჩვეულებრივი ჩანაცვლება
+2| `${var:-word}` | თუ ცვლად var-ს არ აქვს მნიშვნელობა, ის იქნება __ჩანაცვლებული__ word-ის მნიშვნელობით
+3| `${var:=word}` | default მნიშვნელობის __მინიჭება__. (if not set echo word)
+4| `${var:?message}` | თუ ცვლად var-ს არ აქვს მნიშვნელობა, message იქნება დაპრინტულის standard error:+word-ში
+5| `${var:+word}` | თუ ცვლად var-ს __აქვს__ მნიშვნელობა, ის იქნება __ჩანაცვლებული__ word-ის მნიშვნელობით
+
