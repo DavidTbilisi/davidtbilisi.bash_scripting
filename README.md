@@ -1,3 +1,6 @@
+თარგმნილია [tutorialspoint.com](https://www.tutorialspoint.com/unix/shell_scripting.htm)-დან
+
+
 ## Basics
 ყველა სკრიფტი უნდა იწყებოდეს ე.წ. `shebang`-ით, რადგანაც ის მიუთითებს თუ რითი უნდა გაიხსნას მის ქვემოთ დაწერილი სკრიფტი.
 ```bash
