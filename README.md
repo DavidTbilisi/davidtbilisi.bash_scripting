@@ -65,6 +65,8 @@ echo "ჩამონათვალის ყველა ელემენტ
 echo "ჩამონათვალის ყველა ელემენტი ${NUMBERS[@]}" # ყველას დაბეჭდვა
 ```
 ## ოპერატორები
+[წყარო](https://www.tutorialspoint.com/unix/unix-basic-operators.htm)
+
 მნიშვნელოვანი შენიშვნა:
 - ოპეარტორებს შორის უნდა იყოს დაცული მანძილი. მაგალითად `expr 2+2` არ იმუშავებას. სწორია `expr 2 + 2`.
 - ბრძანება უნდა იყოს ჩაწერილი ["ბექთიქებში"](https://macautomationtips.com/wp-content/uploads/2015/08/backtick-key-e1439405041467.jpg)
@@ -195,11 +197,162 @@ else
    echo "$a -lt 100 -o $b -gt 100 : returns false"
 fi
 ```
-
   
 </details>
 
 
 
+### სტრიქონის ოპერატორები
+| ოპერატორი | აღწერა | მაგალითი |
+|:---:|---|---|
+|= 	| უდრის თუ არა ორი სტრიქონი ერთმანეთს | 	[ $a = $b ] |
+|!= |	თუ სტრიქონები არ უდრის, აბრუნებს true-ს | 	[ $a != $b ] |
+|-z |	თუ სტრიქონის სიგრძე უდრის ნულს, აბრუნებს true-ს   |	[ -z $a ] |
+|-n |	თუ სტრიქონი არ არის ცარიელი, აბრუნებს true-ს |	[ -n $a ] |
+|str| თუ სტრიქონი ცარიელია, აბრუნებს false-ს |	[ $a ] |
 
-<!-- https://www.tutorialspoint.com/unix/unix-using-arrays.htm -->
+
+## ბრენჩინგი (if else fi)
+
+unix shell-ში გამოიყენება if-ის შემდეგი ფორმები
+- if...fi
+- if...else...fi
+- if...elif...else...fi
+
+
+<details> 
+  <summary> მაგალითი </summary>
+  
+  ```bash
+  #!/bin/sh
+
+a=10
+b=20
+
+if [ $a == $b ]
+then
+   echo "a is equal to b"
+elif [ $a -gt $b ]
+then
+   echo "a is greater than b"
+elif [ $a -lt $b ]
+then
+   echo "a is less than b"
+else
+   echo "None of the condition met"
+fi
+  ```
+</details>
+
+
+ასევე შესაძლებელია case-ის გამოყენება
+- case...esac
+
+
+<details> 
+  <summary> მაგალითი </summary>
+  
+  ```bash
+#!/bin/sh
+
+FRUIT="kiwi"
+
+case "$FRUIT" in
+   "apple") echo "Apple pie is quite tasty." 
+   ;;
+   "banana") echo "I like banana nut bread." 
+   ;;
+   "kiwi") echo "New Zealand is famous for kiwi." 
+   ;;
+esac
+  ```
+</details>
+
+## ციკლები
+- while loop
+- for loop
+- until loop
+- select loop
+
+
+### while
+```
+while command
+do
+   Statement(s) to be executed if command is true
+done
+```
+```bash
+#!/bin/sh
+
+a=0
+
+while [ $a -lt 10 ]
+do
+   echo $a
+   a=`expr $a + 1`
+done
+```
+
+### for
+```bash
+#!/bin/sh
+
+for var in 0 1 2 3 4 5 6 7 8 9
+do
+   echo $var
+done
+```
+
+
+```bash
+#!/bin/sh
+
+for FILE in $HOME/.bash*
+do
+   echo $FILE
+done
+```
+### until
+```bash
+#!/bin/sh
+
+a=0
+
+until [ ! $a -lt 10 ]
+do
+   echo $a
+   a=`expr $a + 1`
+done
+```
+
+
+### select
+
+```
+select var in word1 word2 ... wordN
+do
+   Statement(s) to be executed for every word.
+done
+```
+
+```bash
+#!/bin/bash
+
+select DRINK in tea cofee water juice appe all none
+do
+   case $DRINK in
+      tea|cofee|water|all) 
+         echo "Go to canteen"
+         ;;
+      juice|appe)
+         echo "Available at home"
+      ;;
+      none) 
+         break 
+      ;;
+      *) echo "ERROR: Invalid selection" 
+      ;;
+   esac
+done
+```
