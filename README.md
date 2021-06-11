@@ -389,3 +389,53 @@ echo "Uptime is $UP"
 4| `${var:?message}` | თუ ცვლად var-ს არ აქვს მნიშვნელობა, message იქნება დაპრინტულის standard error:+word-ში
 5| `${var:+word}` | თუ ცვლად var-ს __აქვს__ მნიშვნელობა, ის იქნება __ჩანაცვლებული__ word-ის მნიშვნელობით
 
+
+## ფუნქციები
+
+
+```bash
+#!/bin/bash
+
+# ფუნქციის შექმნა
+Hello () {
+   echo "Hello World"
+}
+
+# ფუნქციის გამოძახება
+Hello
+```
+
+```bash
+
+#!/bin/sh
+
+# პარამეტრებიანი ფუნქციის შექმნა
+Hello () {
+   echo "Hello $1 and $2"
+}
+
+# ფუნქციის გამოძახება
+Hello David Mevid
+```
+```bash
+
+#!/bin/sh
+
+# პარამეტრებიანი ფუნქციის შექმნა
+Hello () {
+   echo "Hello $1 and $2"
+   return 10
+}
+
+# ფუნქციის გამოძახება
+Hello David Mevid
+
+# ბოლო ბრძანების მნიშვნელობის მიღება
+ret=$?
+
+echo "დაბრუნებული მნიშვნელობა = $ret"
+
+# ფუნქციის წაშლა
+unset -f Hello
+```
+
