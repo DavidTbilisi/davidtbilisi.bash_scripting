@@ -1,5 +1,9 @@
 თარგმნილია [tutorialspoint.com](https://www.tutorialspoint.com/unix/shell_scripting.htm)-დან
 
+## Built-ins
+
+`compgen -k` - გვიბრუნებს ჩაშენებული keyword-ების მნიშვნელობას
+
 
 ## Basics
 ყველა სკრიფტი უნდა იწყებოდეს ე.წ. `shebang`-ით, რადგანაც ის მიუთითებს, თუ რომელი პროგრამის მეშვეობით უნდა გაიხსნას მის ქვემოთ დაწერილი სკრიფტი.
