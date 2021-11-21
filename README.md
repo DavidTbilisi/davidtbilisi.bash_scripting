@@ -478,3 +478,52 @@ unset -f Hello
 ```bash 
 export -f Hello
 ```
+
+---
+
+# Repositories
+
+ფორმატი
+deb http://http.kali.org/kali kali-rolling main non-free conrib
+{ფორმატი} {ლინკი} {გამოშვების ვერსია} {გაიდლაინების გათვალისწინება}
+
+## გაიდლაინები DFSG (Debian Free Software Guidelines)
+main - დაცულია ყველა წესი
+contrib - თავად პაკეტში დაცულია ყველა წესი, თუმცა დამოკიდებულია პაკეტებზე, რომლებიც არ იცავენ ყველა წესს
+non-free - არ არის დაცული წესები
+
+
+ლინუქსის კონკრეტული __გამოშვების ვერსიის__ სახელის სანახავად LSB (Linux Standard Base)
+```bash 
+lsb_release -a 
+```
+## პაკეტების მისამართი
+
+```bash 
+cd /etc/apt
+ls -l 
+```
+## რეპოს დამატება
+```bash
+sudo add-apt-repository ppa:libreoffice/ppa
+```
+```bash
+sudo add-apt-repository 'deb http://archive.getdeb.net/ubuntu wily-getdeb games'
+```
+
+## რეპოს წაშლა
+```bash
+ sudo add-apt-repository --remove ppa:jonathonf/ffmpeg-4
+```
+
+## რეპოს სრულად წაშლა
+(კონფიგურაციებით, სეთინგებით, დამოკიდებულებებით)
+```bash
+ppa-purge ppa:jonathonf/ffmpeg-4
+```
+
+## apt update
+apt update
+- get არის განსხვავება timestamps-ებს შორის, შესაბამისად განახლება გადმოწერადია
+- hit არ არის განსხვავება timestamps-ებს შორის, შეამოწმა, მაგრამ განახლება არ არის
+- ign არ არის განსხვავება pdiff index file-ებში, სავარაუდოდ მიტოვებული რეპო
