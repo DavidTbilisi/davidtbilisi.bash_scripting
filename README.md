@@ -1,5 +1,6 @@
 თარგმნილია [tutorialspoint.com](https://www.tutorialspoint.com/unix/shell_scripting.htm)-დან
-
+დამატებითი რესურსები:
+- [Linux Course](https://linuxcourse.rutgers.edu/html/Lesson_1.html)
 ## Built-ins
 
 `compgen -k` - გვიბრუნებს ჩაშენებული keyword-ების მნიშვნელობას
