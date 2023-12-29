@@ -2,12 +2,25 @@
 
 დამატებითი რესურსები:  
 - [Linux Course](https://linuxcourse.rutgers.edu/html/Lesson_1.html)
+- [Linux for programmers](https://youtube.com/playlist?list=PLTnRtjQN5iea6LlzIpcX5M4Av4JBPEiHm&si=_D1o1POuAhSPYeCN)
+
+## რატომ უნდა ვისწავლო Shell Scripting-ი?
+- კომპიუტერის ავტომატიზაცია
+- კომპიუტერის მართვა
+- პატარ-პატარა ტასკების დაჯგუფება
+- უმეტესწილად უფრო ლაკონურია ვიდრე პითონი
+- შეგვიძლია ასევე პითონთან ერთად გამოყენება
+
+
 ## Built-ins
 
 `compgen -k` - გვიბრუნებს ჩაშენებული keyword-ების მნიშვნელობას
 
 
 ## Basics
+
+[Shell script basics](https://youtu.be/EbyA5rZwyRw?si=CbmbtTzSbkZ3zTUQ)
+
 ყველა სკრიფტი უნდა იწყებოდეს ე.წ. `shebang`-ით, რადგანაც ის მიუთითებს, თუ რომელი პროგრამის მეშვეობით უნდა გაიხსნას მის ქვემოთ დაწერილი სკრიფტი.
 ```bash
 #!/bin/bash
@@ -47,14 +60,14 @@ sudo chmod 744 filename.sh
 ცვლადის სახელები უნდა შეცავდეს მხოლოდ [a-zA-Z0-9_] სიმბოლოებს, 
 ცვლადის სახელებს ასევე კონვენციის მიხედვით წერენ UPPERCASE-ით
 
-**ცვლადების გამოცხადებისას მინიჭების მარცხნიდან და მარჯვნიდან არ უნდა იყოს დაშორება.**
+**_ცვლადების გამოცხადებისას მინიჭების სიმბოლოს (=) მარცხნიდან და მარჯვნიდან არ უნდა იყოს დაშორება._**
 
 ```bash
 NAME="David"
 AGE=31
 echo "Hello, my name is $NAME and I'm $AGE years old! "
 ```
-### (**Read-only**) ანუ ცვლადების გადაქცევა კონსტანტებად
+### **Read-only** ანუ კონსტანტები
 
 ```bash
 NAME="David"
@@ -71,14 +84,14 @@ NAME="David"
 unset NAME
 echo $NAME
 ```
-### ცვლადები და გარემო
+### ცვლადები და [გარემო](https://youtu.be/yM8v5i2Qjgg?si=M06tEOSThU8hb33j&t=282)
 
 ლოკალური ცვლადები რომლებიც ჩანს მხოლოდ ერთ ფანჯერაში შეგვიძლია დავწეროთ ჩვეულებრივად 
 
 ```bash 
 VAR="Value"
 ```
-ხოლო თუ გვინდა ცვლადს სხვა ფანჯრიდანაც მივწვდეთ, მაშინ უნდა დავწეროთერთადერთი რომ შორთქათეერთადერთი რომ შორთქათე:
+ხოლო თუ გვინდა ცვლადს სხვა ფანჯრიდანაც მივწვდეთ, მაშინ წინ უნდა მივუწეროთ keyword-ი `export`: 
 
 
 ```bash 
@@ -383,18 +396,23 @@ done
 ```
 
 
-### select
+### Select - ინტერაქტიული მენიუს შექმნა
 
+ინტერაქტიიულ მენიუში შეიძლება იყოს მოთავსებული სხვადასხვა ფუნქცია... 
+
+
+მარტივი მაგალითი.
 ```
-select var in word1 word2 ... wordN
+select item in tea cofee water juice appe all none
 do
-   Statement(s) to be executed for every word.
+   echo "You have selected ${item}"
 done
 ```
 
+
+შედარებით კომპლექსური მაგალითი.
 ```bash
 #!/bin/bash
-
 select DRINK in tea cofee water juice appe all none
 do
    case $DRINK in
@@ -411,6 +429,54 @@ do
       ;;
    esac
 done
+```
+
+
+```bash
+#!/bin/bash
+
+echo "Select a Linux command to learn more about it:"
+
+select cmd in ls pwd cd grep echo find mkdir rmdir touch exit
+do
+    case $cmd in
+        ls)
+            echo "ls: List directory contents."
+            ;;
+        pwd)
+            echo "pwd: Print name of current/working directory."
+            ;;
+        cd)
+            echo "cd: Change the shell working directory."
+            ;;
+        grep)
+            echo "grep: Search for patterns in files."
+            ;;
+        echo)
+            echo "echo: Display a line of text."
+            ;;
+        find)
+            echo "find: Search for files in a directory hierarchy."
+            ;;
+        mkdir)
+            echo "mkdir: Make directories."
+            ;;
+        rmdir)
+            echo "rmdir: Remove empty directories."
+            ;;
+        touch)
+            echo "touch: Change file timestamps."
+            ;;
+        exit)
+            echo "Exiting the menu."
+            break
+            ;;
+        *)
+            echo "Invalid selection: $REPLY"
+            ;;
+    esac
+done
+
 ```
 ## ჩანაცვლება (Substitution)
 
