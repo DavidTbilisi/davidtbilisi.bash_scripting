@@ -562,13 +562,74 @@ UP=`date ; uptime`
 echo "Uptime is $UP"
 ```
 
-|# | ფორმა | აღწერა|
----|---|---
-1| `${var}` | ჩვეულებრივი ჩანაცვლება
-2| `${var:-word}` | თუ ცვლად var-ს არ აქვს მნიშვნელობა, ის იქნება __ჩანაცვლებული__ word-ის მნიშვნელობით
-3| `${var:=word}` | default მნიშვნელობის __მინიჭება__. (if not set echo word)
-4| `${var:?message}` | თუ ცვლად var-ს არ აქვს მნიშვნელობა, message იქნება დაპრინტულის standard error:+word-ში
-5| `${var:+word}` | თუ ცვლად var-ს __აქვს__ მნიშვნელობა, ის იქნება __ჩანაცვლებული__ word-ის მნიშვნელობით
+### ცვლადების ჩანაცვლება
+
+|# |      ფორმა        |                              აღწერა                                                   |
+---|-------------------|---------------------------------------------------------------------------------------
+1  | `${var}`          | ჩვეულებრივი ჩანაცვლება
+2  | `${var:-word}`    | თუ ცვლად var-ს არ აქვს მნიშვნელობა, ის იქნება __ჩანაცვლებული__ word-ის მნიშვნელობით
+3  | `${var:=word}`    | default მნიშვნელობის __მინიჭება__. (if not set echo word)
+4  | `${var:+word}`    | თუ ცვლად var-ს __აქვს__ მნიშვნელობა, ის იქნება __ჩანაცვლებული__ word-ის მნიშვნელობით
+5  | `${var:?message}` | თუ ცვლად var-ს არ აქვს მნიშვნელობა, message იქნება დაპრინტული standard error ში
+
+**მაგალითები:**
+
+მაგალითი 1 - ჩვეულებრივი ჩანაცვლება
+```bash
+greeting="Hello, world!"
+echo $greeting  # Outputs: Hello, world!
+```
+
+მაგალითი 2 - თუ ცვლად არ აქვს მნიშვნელობა
+```bash
+echo "Welcome, ${username:-Guest}"
+```
+მაგალითი 3 - თუ ცვლად არ აქვს მნიშვნელობა
+```bash
+echo ${path:=/usr/bin}
+echo $path  # Outputs: /usr/bin
+```
+მაგალითი 4 - ალტერნატიული მნიშვნელობა
+```bash
+isLoggedIn=true
+echo "Status: ${isLoggedIn:+Logged In}"
+```
+მაგალითი 5 - შეცდომის შეტყობინების ჩანაცვლება
+```bash
+echo "Configuration file: ${configFile:?"is not set"}"
+```
+
+
+### არითმეტიული ჩანაცვლება
+```bash
+result=$((3 + 2))
+echo $result  # Output: 5
+```
+
+### ფიგურილი ფრჩხილების გაფართოება
+```bash
+echo {1..5}  # Output: 1 2 3 4 5
+```
+
+
+### პარამეტრების გაფართოვება
+```bash
+text="hello world"
+# ${ცვლადი:პოზიცია:სიგრძე}
+echo ${text:6:5}  # Output: world
+```
+
+```bash
+text="hello world"
+# ${ცვლადი:ძიება:ჩანაცვლება}
+echo ${text/o/O}  # Output: hellO world
+```
+
+```bash
+text="hello world"
+# ${ცვლადი:პოზიცია:სიგრძე}
+echo ${text//o/O}  # Output: hellO wOrld
+```
 
 
 ## ფუნქციები
@@ -624,7 +685,17 @@ unset -f Hello
 ```bash 
 export -f Hello
 ```
+### Function with default arguments
 
+```bash
+greet_user() {
+    local name=${1:-"Guest"}
+    echo "Welcome, $name!"
+}
+
+greet_user  # Output: Welcome, Guest!
+
+```
 ---
 
 # Repositories
