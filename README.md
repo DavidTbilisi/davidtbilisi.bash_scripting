@@ -3,6 +3,7 @@
 დამატებითი რესურსები:  
 - [Linux Course](https://linuxcourse.rutgers.edu/html/Lesson_1.html)
 - [Linux for programmers](https://youtube.com/playlist?list=PLTnRtjQN5iea6LlzIpcX5M4Av4JBPEiHm&si=_D1o1POuAhSPYeCN)
+- [Online bash](https://www.onlinegdb.com/online_bash_shell)
 
 ## რატომ უნდა ვისწავლო Shell Scripting-ი?
 - კომპიუტერის ავტომატიზაცია
@@ -99,8 +100,48 @@ export VAR="Value"
 ```
 
 ```bash 
-declare -x Value
+declare -x Var="Value"
 ```
+
+### Declare 
+გვაძლევს ცვლადის შექმნის საშუალებას. 
+
+```bash 
+declare -r Value=3
+Value=1  # Error Value: readonly variable 
+echo $Value
+```
+
+```bash
+declare -i number
+number=1+2  # The result is 3, not the string "1+2"
+```
+
+
+```bash
+declare -a myArray
+myArray[0]=Hi
+myArray[1]=Hey
+echo ${myArray[@]}
+```
+
+```bash
+# Declares a variable as an associative array (hash map)
+declare -A myArray
+myArray[0]=Hi
+myArray[1]=Hey
+echo ${myArray[@]}
+```
+
+```bash 
+declare -x Value # export Value
+```
+
+```bash
+declare -l lowercase_var="This Will Be Lowercase"
+declare -u uppercase_var="This Will Be Uppercase"
+```
+
 
 ## სპეციალური ცვლადები
 
@@ -118,20 +159,39 @@ declare -x Value
 
 ## მასივები
 
+### შექმნა
+```bash
+myarray=("one" "two" "three")
+```
+### დამატება
+```bash
+myarray+=("Four")
+```
+### სიგრძის გაგება
+```bash
+echo ${#myarray[@]}
+```
+
+### იტერაცია (ციკლში გატარება)
+```bash
+for item in "${my_array[@]}"; do
+    echo $item
+done
+```
+
+### შეცვლა
+```bash
+my_array[0]="One"
+```
+### წაშლა
+```bash
+unset my_array[1]
+```
 
 ```bash
-NUMBERS[0]="ნული"
-NUMBERS[1]="ერთი"
-NUMBERS[2]="ორი"
-NUMBERS[3]="სამი"
-NUMBERS[4]="ოთხი"
-
-# NUMBERS=("zero" "one" "two") # ალტერნატიული სინტაქსი
-
-echo "ჩამონათვალის პირველი ელემენტი ${NUMBERS[0]}" # ერთის დაბეჭდვა
-echo "ჩამონათვალის ყველა ელემენტი ${NUMBERS[*]}" # ყველას დაბეჭდვა
-echo "ჩამონათვალის ყველა ელემენტი ${NUMBERS[@]}" # ყველას დაბეჭდვა
+echo This is my array content ${myarray[*]} length = ${#myarray[@]}
 ```
+
 ## ოპერატორები
 [წყარო](https://www.tutorialspoint.com/unix/unix-basic-operators.htm)
 
