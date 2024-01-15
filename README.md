@@ -162,7 +162,7 @@ declare -u uppercase_var="This Will Be Uppercase"
 ```bash
 
 add_tag() {
-	echo tm add "$1" --tags "${@:2}" # იღებს ყველა არგუმენტს სტრიქონად და იყენებს "ჩანაცვლებას" (პარამეტრების გაფართოვება)
+	echo tm add "$1" --tags "${@:2}" # იღებს ყველა არგუმენტს სტრიქონად და იყენებს ["ჩანაცვლებას"](https://github.com/DavidTbilisi/davidtbilisi.bash_scripting?tab=readme-ov-file#%E1%83%9E%E1%83%90%E1%83%A0%E1%83%90%E1%83%9B%E1%83%94%E1%83%A2%E1%83%A0%E1%83%94%E1%83%91%E1%83%98%E1%83%A1-%E1%83%92%E1%83%90%E1%83%A4%E1%83%90%E1%83%A0%E1%83%97%E1%83%9D%E1%83%95%E1%83%94%E1%83%91%E1%83%90)
 	tm add "$1" --tags "${@:2}"
 }
 ```
