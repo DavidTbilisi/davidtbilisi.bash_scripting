@@ -182,7 +182,21 @@ myarray=("one" "two" "three")
 myarray+=("Four")
 ```
 ### სიგრძის გაგება
+
+
 ```bash
+# ცვლადის ერთი ელემენტის
+var="David"
+echo ${#var} # 5
+```
+
+```bash
+# მასივის ერთი ელემენტის
+echo ${#myarray[0]}
+```
+
+```bash
+# მასივისი ყველა ელემენტის
 echo ${#myarray[@]}
 ```
 
