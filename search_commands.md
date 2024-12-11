@@ -20,6 +20,11 @@ locate -r 'pattern.*\.txt'
 ```
 
 
+```bash
+sudo updatedb
+```
+
+
 
 
 
