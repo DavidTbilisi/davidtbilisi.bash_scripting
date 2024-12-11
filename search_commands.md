@@ -1,5 +1,6 @@
 # LOCATE
 [Docs](https://manpages.debian.org/bookworm/plocate/locate.1.en.html)
+[Examples](https://tldr.inbrowser.app/pages/linux/locate)
 ```bash
 locate filename
 ```
@@ -31,6 +32,7 @@ sudo updatedb
 
 # FIND 
 [Docs](https://manpages.debian.org/bookworm/findutils/find.1.en.html)
+[Examples](https://tldr.inbrowser.app/pages/common/find)
 ```bash
 find /path/to/search -iname "filename"
 ```
@@ -64,6 +66,7 @@ find /path/to/search -mtime -7
 
 # GREP
 [Docs](https://manpages.debian.org/bookworm/grep/grep.1.en.html)
+[Examples](https://tldr.inbrowser.app/pages/common/grep)
 ## პარამეტრები
 `-i` რიგისტრს არ მიაქციო ყურადღება <br>
 `-r` მოძებნე შიდა ფაილებში და საქაღალდეებშიც <br>
