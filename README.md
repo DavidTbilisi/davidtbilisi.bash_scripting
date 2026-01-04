@@ -4,6 +4,7 @@
 - [Linux Course](https://linuxcourse.rutgers.edu/html/Lesson_1.html)
 - [Linux for programmers](https://youtube.com/playlist?list=PLTnRtjQN5iea6LlzIpcX5M4Av4JBPEiHm&si=_D1o1POuAhSPYeCN)
 - [Online bash](https://www.onlinegdb.com/online_bash_shell)
+- [Google Shell Style Guide](https://google.github.io/styleguide/shellguide.html)
 
 ## რატომ უნდა ვისწავლო Shell Scripting-ი?
 - კომპიუტერის ავტომატიზაცია
