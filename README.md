@@ -773,3 +773,43 @@ apt update
 - get არის განსხვავება timestamps-ებს შორის, შესაბამისად განახლება გადმოწერადია
 - hit არ არის განსხვავება timestamps-ებს შორის, შეამოწმა, მაგრამ განახლება არ არის
 - ign არ არის განსხვავება pdiff index file-ებში, სავარაუდოდ მიტოვებული რეპო
+
+## Exit Status
+[GNU docs](https://www.gnu.org/software/bash/manual/html_node/Exit-Status.html)
+[Advanced Bash-Scripting Guide](https://tldp.org/LDP/abs/html/exitcodes.html)
+[C Docs](https://man7.org/linux/man-pages/man3/sysexits.h.3head.html)
+
+ერთადერთი საშუალება რომელიც გვანახებს რამდენად სწორად იმუშავა სკრიპტმა. 
+
+`0` → success <br>
+`1–255` → failure (or special meaning) <br>
+
+სკრიპტის შესრულების მერე სტატუსი ინახება სპეციალურ ცვლადში `$?`
+```bash
+$0 # 2 → error
+```
+გამოიყენება `if-else` -შიც
+```bash
+if grep -q "admin" users.txt; then
+  echo "found admin"
+fi
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
